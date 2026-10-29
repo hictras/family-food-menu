@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Family Food Menu</title>
+  <link rel="stylesheet" href="/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.15/index.global.min.js"></script>
+</head>
+<body>
+  <header class="app-header">
+    <div class="brand">
+      <h1>👨‍👩‍👧‍👦 Family Food Menu</h1>
+      <p>Plan family meals by day and week</p>
+    </div>
+    <div class="header-actions">
+      <button id="addRecipeBtn" class="primary">＋ New Recipe</button>
+      <button id="familyBtn" class="secondary">🔔 Notifications</button>
+    </div>
+  </header>
+
+  <main class="app-main">
+    <section class="calendar-panel">
+      <div class="calendar-toolbar">
+        <div class="view-switch">
+          <button data-view="dayGridWeek" class="active">Week</button>
+          <button data-view="dayGridMonth">Month</button>
+        </div>
+        <div class="filters">
+          <label for="mealFilter">Meal</label>
+          <select id="mealFilter">
+            <option value="">All meals</option>
+            <option value="Breakfast">Breakfast</option>
+            <option value="Lunch">Lunch</option>
+            <option value="Dinner">Dinner</option>
+            <option value="Snack">Snack</option>
+          </select>
+        </div>
+      </div>
+      <div id="calendar"></div>
+    </section>
+
+    <aside id="dayPanel" class="day-panel hidden">
+      <div class="day-panel-header">
+        <h2 id="dayPanelTitle">Selected day</h2>
+        <button id="closeDayPanel" class="icon-button">✕</button>
+      </div>
+      <div id="dayPanelMeals" class="day-panel-meals"></div>
+      <button id="addMealForDay" class="primary full-width">＋ Add meal for this day</button>
+    </aside>
+  </main>
+
+  <dialog id="recipeDialog" class="app-dialog">
+    <form id="recipeForm">
+      <div class="dialog-header">
+        <h2 id="recipeDialogTitle">New Recipe</h2>
+        <button type="button" id="closeRecipe" class="icon-button">✕</button>
+      </div>
+      <input type="hidden" id="recipeId" />
+      <label>Recipe title<input id="title" required /></label>
+      <label>Meal type
+        <select id="mealType">
+          <option>Breakfast</option><option>Lunch</option>
+          <option>Dinner</option><option>Snack</option>
+        </select>
+      </label>
+      <label>Description<textarea id="description"></textarea></label>
+      <label>Ingredients<textarea id="ingredients"></textarea></label>
+      <label>Steps<textarea id="steps"></textarea></label>
+      <div class="dialog-actions">
+        <button type="submit" class="primary">Save Recipe</button>
+        <button type="button" id="cancelRecipe" class="secondary">Cancel</button>
+      </div>
+    </form>
+  </dialog>
+
+  <dialog id="menuDialog" class="app-dialog">
+    <form id="menuForm">
+      <div class="dialog-header">
+        <h2>Add Meal to Calendar</h2>
+        <button type="button" id="closeMenu" class="icon-button">✕</button>
+      </div>
+      <label>Date<input type="date" id="menuDate" required /></label>
+      <label>Meal type
+        <select id="menuMealType">
+          <option>Breakfast</option><option>Lunch</option>
+          <option>Dinner</option><option>Snack</option>
+        </select>
+      </label>
+      <label>Recipe<select id="menuRecipe" required></select></label>
+      <div class="dialog-actions">
+        <button type="submit" class="primary">Add to Calendar</button>
+        <button type="button" id="cancelMenu" class="secondary">Cancel</button>
+      </div>
+    </form>
+  </dialog>
+
+  <dialog id="familyDialog" class="app-dialog">
+    <form id="familyForm">
+      <div class="dialog-header">
+        <h2>Family Notifications</h2>
+        <button type="button" id="closeFamily" class="icon-button">✕</button>
+      </div>
+      <p class="muted">Enter your name and phone number, then allow notifications.</p>
+      <label>Your name<input id="memberName" required /></label>
+      <label>Phone number<input id="memberPhone" required placeholder="+201234567890" /></label>
+      <button type="button" id="enablePush" class="secondary full-width">Allow Notifications</button>
+      <p id="familyStatus" class="status"></p>
+      <div class="dialog-actions">
+        <button type="submit" class="primary">Save</button>
+        <button type="button" id="cancelFamily" class="secondary">Close</button>
+      </div>
+    </form>
+  </dialog>
+
+  <script src="/app.js"></script>
+</body>
+</html>

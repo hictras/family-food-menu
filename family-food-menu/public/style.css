@@ -1,0 +1,51 @@
+:root{
+  --green:#2f6f4f; --green-dark:#24573d; --gray:#6b7280;
+  --light:#f4f6f8; --white:#fff; --border:#dfe3e8;
+  --shadow:0 6px 20px rgba(15,23,42,.08);
+  --breakfast:#f4a261; --lunch:#2a9d8f; --dinner:#264653; --snack:#e76f51;
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:system-ui,sans-serif;background:var(--light);color:#1f2937}
+button,input,select,textarea{font:inherit}
+button{border:none;border-radius:10px;padding:10px 14px;cursor:pointer}
+.primary{background:var(--green);color:#fff}
+.primary:hover{background:var(--green-dark)}
+.secondary{background:#e5e7eb;color:#1f2937}
+.full-width{width:100%}
+.icon-button{background:transparent;color:var(--gray);font-size:18px;padding:4px 8px}
+.app-header{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:18px 24px;background:var(--green);color:#fff;flex-wrap:wrap}
+.brand h1{margin:0;font-size:24px}
+.brand p{margin:5px 0 0;font-size:14px;opacity:.85}
+.header-actions{display:flex;gap:10px;flex-wrap:wrap}
+.header-actions .secondary{background:rgba(255,255,255,.16);color:#fff}
+.app-main{max-width:1250px;margin:22px auto;padding:0 16px;display:grid;gap:18px}
+.calendar-panel{background:#fff;border-radius:16px;padding:18px;box-shadow:var(--shadow)}
+.calendar-toolbar{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:16px;flex-wrap:wrap}
+.view-switch{display:flex;border:1px solid var(--border);border-radius:10px;overflow:hidden}
+.view-switch button{background:#fff;color:#374151;border-radius:0;padding:8px 16px}
+.view-switch button.active{background:var(--green);color:#fff}
+.filters{display:flex;align-items:center;gap:8px}
+.filters label{font-size:14px;font-weight:600;color:var(--gray)}
+.filters select{padding:8px 10px;border:1px solid var(--border);border-radius:10px}
+.day-panel{background:#fff;border-radius:16px;padding:18px;box-shadow:var(--shadow);align-self:start}
+.day-panel.hidden{display:none}
+.day-panel-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+.day-panel-header h2{margin:0;font-size:18px}
+.day-panel-meals{display:grid;gap:10px;margin-bottom:14px}
+.meal-card{border-left:5px solid var(--meal-color,var(--green));background:#fafafa;border-radius:10px;padding:12px}
+.meal-card h3{margin:0 0 4px;font-size:13px;text-transform:uppercase;color:var(--meal-color,var(--green))}
+.meal-card button{background:transparent;color:var(--green);border:1px solid var(--green)}
+.app-dialog{border:none;border-radius:16px;padding:22px;width:min(580px,94vw);box-shadow:var(--shadow)}
+.app-dialog::backdrop{background:rgba(15,23,42,.45)}
+.dialog-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}
+.dialog-header h2{margin:0;font-size:20px}
+.app-dialog form{display:grid;gap:12px}
+.app-dialog label{display:grid;gap:6px;font-size:14px;font-weight:600;color:#374151}
+.app-dialog input,.app-dialog select,.app-dialog textarea{width:100%;padding:10px;border:1px solid var(--border);border-radius:10px}
+.app-dialog textarea{min-height:90px;resize:vertical}
+.dialog-actions{display:flex;gap:10px;margin-top:6px}
+.dialog-actions button{flex:1}
+.muted{color:var(--gray);font-size:14px;margin:0 0 10px}
+.status{min-height:20px;margin:0;font-size:14px;color:var(--green-dark)}
+@media(max-width:999px){.app-main{grid-template-columns:1fr}}
+@media(min-width:1000px){.app-main{grid-template-columns:minmax(0,3fr) minmax(280px,1fr);align-items:start}}
