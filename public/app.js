@@ -291,3 +291,27 @@ document.addEventListener("DOMContentLoaded",async()=>{
   await loadRecipes();
   initializeCalendar();
 });
+ document.getElementById("notifyBtn").addEventListener("click", async () => {
+  const button = document.getElementById("notifyBtn");
+
+  button.disabled = true;
+  button.textContent = "Sending...";
+
+  try {
+    await requestJSON("/api/notify", {
+      method: "POST",
+      body: JSON.stringify({
+        title: "Family Food Menu",
+        body: "This is a test notification."
+      })
+    });
+
+    alert("Test notification sent to all subscribed family members.");
+  } catch (error) {
+    console.error(error);
+    alert(error.message || "Could not send the test notification.");
+  } finally {
+    button.disabled = false;
+    button.textContent = "📨 Send Test Notification";
+  }
+});
